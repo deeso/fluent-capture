@@ -1,0 +1,42 @@
+# add this block to the suricata conf file in
+# the outputs section
+  - eve-log:
+      enabled: yes
+      filename: /var/log/suricata/td-agent-tail-eve.json
+      filetype: regular
+      filemode: 666
+      rotate-interval: 3600s
+      identity: "wan-suricata"
+      facility: local5
+      level: Info 
+      types:
+        - alert:
+            payload: yes           # enable dumping payload in Base64
+            payload-printable: yes # enable dumping payload in printable (lossy) format
+            packet: yes            # enable dumping of packet (without stream segments)
+            http: yes              # enable dumping of http fields
+            tls: yes               # enable dumping of tls fields
+            ssh: yes               # enable dumping of ssh fields
+            smtp: yes              # enable dumping of smtp fields
+
+            xff:
+              enabled: no
+              mode: extra-data
+              deployment: reverse
+              header: X-Forwarded-For
+        - http:
+            extended: yes     # enable this for extended logging information
+        - dns
+        - tls:
+            extended: yes     # enable this for extended logging information
+        - files:
+            force-magic: yes   # force logging magic on all logged files
+            force-md5: no     # force logging of md5 checksums
+        - smtp:
+            extended: yes # enable this for extended logging information
+
+        - ssh
+        - stats:
+            totals: yes       # stats for all threads merged together
+            threads: no       # per thread stats
+            deltas: no        # include delta values

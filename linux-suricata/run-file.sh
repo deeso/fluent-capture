@@ -1,3 +1,4 @@
+
 # curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.s
 echo "First part of script taken from: https://docs.fluentd.org/v1.0/articles/install-by-deb"
 echo "=============================="
@@ -21,6 +22,7 @@ sudo sh <<SCRIPT
 
 SCRIPT
 
+sudo td-agent-gem install fluent-plugin-named_pipe
 sudo bash -c "cat rsyslog/rsyslog.conf >> /etc/rsyslog.conf"
 sudo bash -c "cat td-agent/td-agent.conf >> /etc/td-agent/td-agent.conf"
 
