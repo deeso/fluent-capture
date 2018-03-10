@@ -1,3 +1,3 @@
-docker-compose kill elasticsearch kilbana
-docker-compose rm -f -v elasticsearch kilbana
+docker-compose kill elasticsearch kibana
+docker-compose rm -f -v elasticsearch kibana
 docker-compose up -d
