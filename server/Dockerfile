@@ -8,7 +8,8 @@ RUN apt-get update && \
             libyaml-dev libsqlite3-dev sqlite3 autoconf  \
             libgdbm-dev libncurses5-dev automake libtool \
             bison pkg-config libffi-dev ruby2.3-dev && \
-    fluent-gem install fluent-plugin-mongo
+    fluent-gem install fluent-plugin-mongo && \
+    fluent-gem install fluent-plugin-kafka
 
 
 
