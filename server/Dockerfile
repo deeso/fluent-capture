@@ -1,5 +1,6 @@
 FROM fluent/fluentd:v1.1.1-debian
 
+
 RUN apt-get update
 # install the prerequisite patches here so that rvm will install under non-root account. 
 RUN apt-get update && \
@@ -9,8 +10,12 @@ RUN apt-get update && \
             libgdbm-dev libncurses5-dev automake libtool \
             bison pkg-config libffi-dev ruby2.3-dev && \
     fluent-gem install fluent-plugin-mongo && \
-    fluent-gem install fluent-plugin-kafka
+    fluent-gem install fluent-plugin-kafka && \
+    fluent-gem install fluent-plugin-elasticsearch
+
+RUN mkdir -p /fluentd/etc/
+COPY fluent.conf /fluentd/etc/fluent.conf
 
 
 
-EXPOSE 20001/tcp
+EXPOSE 20001/tcp 42100/udp
