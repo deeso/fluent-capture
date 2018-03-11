@@ -1,0 +1,5 @@
+[mongodb]
+    host = '10.18.120.14'
+    port = 27017
+    db = 'fluent'
+    collection = 'firewall-raw'
