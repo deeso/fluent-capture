@@ -1,5 +1,20 @@
-[mongodb]
-    host = '10.18.120.14'
-    port = 27017
-    db = 'fluent'
-    collection = 'firewall-raw'
+[pfsense-log-processor]
+
+    # keep track of processed windows
+    [pfsense-log-processor.mongo-client]
+        host = '10.18.120.14'
+        port = 27017
+        dest_database = 'firewall-processor'
+        dest_collection = 'state'
+        source_db = 'fluent'
+        source_collection = 'firewall-raw'
+        source_key = 'time'
+        # %Y-%m-%dT%H:%M:%S.%f%Z
+        start_time = '2018-03-10T16:00:00'
+        window_secs = 60
+
+    # forward processed firewall logs
+    [pfsense-log-processor.fluentd-client]
+        host = '10.18.120.14'
+        port = 42101
+

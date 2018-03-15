@@ -18,4 +18,4 @@ COPY fluent.conf /fluentd/etc/fluent.conf
 
 
 
-EXPOSE 20001/tcp 42100/udp
+EXPOSE 20001/tcp 42100/udp 42101/udp
